@@ -7,7 +7,7 @@ namespace Aquaff.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool isAdult { get; set; }
+        public bool IsAdult { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public ICollection<Animal> Animals { get; set; }

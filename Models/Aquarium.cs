@@ -6,7 +6,7 @@ namespace Aquaff.Models
     {
         [Key]
         public int Id { get; set; }
-        public bool isDirty { get; set; }
+        public bool IsDirty { get; set; }
         public ICollection<Animal> Animals { get; set; }
 
         public int AccountId { get; set; }
