@@ -1,0 +1,198 @@
+/*reset css*/
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+    padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul[class] {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+/*fonts*/
+
+@font-face {
+    font-family: 'BauhausC'; /* Название шрифта, которое будет использоваться */
+    src: url('../fonts/Azbuka04.woff2') format('woff2'), /* Путь к файлу шрифта */
+    /* Дополнительные свойства, например, font-weight и font-style */
+}
+
+/*main styles*/
+
+.container {
+    max-width: 1320px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+
+.none {
+    display: none;
+}
+
+
+
+body {
+    color: #fff;
+    font-family: 'BauhausC', sans-serif;
+    font-weight: 600; /* Используйте название шрифта */
+    letter-spacing: 2px;
+}
+
+
+
+
+
+
+
+.login__container {
+    background-image: url('../images/login_bac.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.container {
+}
+
+.login__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.login__title {
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 36px;
+}
+
+.login__box {
+    width: 500px;
+}
+
+.login__descr {
+    margin-bottom: 7px;
+    font-size: 22px;
+    letter-spacing: 3px;
+}
+
+.input__style {
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: none;
+    color: #000;
+}
+
+    .input__style::placeholder {
+        color: #171717;
+        font-size: 17px;
+    }
+
+.submit__btn {
+    width: 320px;
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+    background-color: #FF7401;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.register__redirect,
+.login__redirect {
+    color: #FF7401;
+}
+
+.login__redirect-box {
+    text-align: center;
+}
+
+.login__blur {
+    background-image: url('../images/blur.png');
+    background-position: 0 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 40px;
+}
+
+@media(max-width:1200px) {
+    .login__blur {
+        background-image: none;
+    }
+}
+
+@media(max-width:500px) {
+    .login__box {
+        width: 320px;
+    }
+}
+
+@media(max-width:340px) {
+    .login__box {
+        width: 250px;
+    }
+
+    .submit__btn {
+        width: 250px;
+    }
+}

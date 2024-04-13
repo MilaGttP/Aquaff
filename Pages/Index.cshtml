@@ -4,7 +4,62 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="login__container">
+    <div id="loginnode" class="login none">
+        <div class="container ">
+            <form class="login__form login__blur">
+                <p class="login__title">
+                    Вхід
+                </p>
+                <div class="login__box">
+                    <p class="login__descr">
+                        Введіть пошту
+                    </p>
+                    <input placeholder="Mail@g.com" class="input__style" type="text">
+                    <p class="login__descr">
+                        Введіть Пароль
+                    </p>
+                    <input class="input__style" placeholder="Password" type="text">
+                    <button class="submit__btn">
+                        Увійти
+                    </button>
+
+                    <p class="login__descr login__redirect-box">
+                        Ще немає аккаунта? <a href="#" class="login__redirect">Зареєструватись</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="registernode" class="register">
+        <div class="container">
+            <form class="login__form login__blur">
+                <p class="login__title">
+                    Реєстрація
+                </p>
+                <div class="login__box">
+                    <p class="login__descr">
+                        Введіть пошту
+                    </p>
+                    <input class="input__style" placeholder="Mail@g.com" type="text">
+                    <p class="login__descr">
+                        Введіть Пароль
+                    </p>
+                    <input class="input__style" placeholder="Password" type="text">
+                    <p class="login__descr">
+                        Введіть Ім'я
+                    </p>
+                    <input class="input__style" placeholder="Name" type="text">
+                    <button class="submit__btn">
+                        Зареєсьтруватись
+                    </button>
+                    <p class="login__descr login__redirect-box">
+                        Уже є аккаунт? <a href="#" class="register__redirect">Увійти</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
