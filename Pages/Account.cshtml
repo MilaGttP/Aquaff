@@ -1,0 +1,123 @@
+﻿@page
+@model Aquaff.Pages.AccountModel
+@inject Services.IProfileService ProfileService
+@{
+}
+
+<div class="profile">
+    <div class="container ">
+        <div class="profile__top">
+            <p class="profile__name">
+                @Model.User.Name
+            </p>
+            <div class="profile__box">
+                <div class="profile__wallet">
+                    <p>@Model.User.Money</p>
+                    <img class="profile__wallet-img" src="./images/Group 4.svg" alt="">
+                </div>
+                <button class="profile__notification">
+                    <img src="./images/notif.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <p class="profile__title">
+            Мої рибки:
+        </p>
+        <ul class="profile__my__fish-list">
+            @foreach (var animalType in Model.AnimalTypes)
+            {
+                var animalsOfType = ProfileService.GetAllAnimalsByUser(Model.Context, Model.User.Id).Where(a => a.Type == animalType).ToList();
+                var countOfType = ProfileService.GetCountAnimalByType(Model.Context, Model.User.Id, animalType);
+
+                if (animalsOfType.Any())
+                {
+                    <li class="profile__my__fish-item">
+                        <div class="notofication__num-box">
+                            <p class="notofication__num">@countOfType</p>
+                            <p>шт</p>
+                        </div>
+                        <img class="profile__item-img" src="@ProfileService.GetAnimalPictureByType(animalType)" alt="тут мала б бути картинка, але її немає...">
+                        <form method="post" asp-page-handler="SellAnimal">
+                            <input type="hidden" name="animalType" value="@animalType" />
+                            <button type="submit" class="profile__button-style">
+                                ПРОДАТИ <p>@ProfileService.GetPriceByType(Model.Context, Model.User.Id, animalType)</p>
+                                <img src="./images/money-small.svg" alt="">
+                            </button>
+                        </form>
+                    </li>
+                }
+            }
+        </ul>
+
+        <p class="profile__title">
+            Fishsell пропонує
+        </p>
+        <ul class="profile__my__fish-list">
+            <li class="profile__my__fish-item">
+                <div class="notofication__num-box">
+                    <p class="notofication__num">1</p>
+                    <p>шт</p>
+                </div>
+                <img class="profile__item-img" src="./images/1.png" alt="">
+                <form method="post" asp-page-handler="BuyFish">
+                    <button class="profile__button-style">
+                        купити <p>40</p>
+                        <img src="./images/money-small.svg" alt="">
+                    </button>
+                </form>
+            </li>
+            <li class="profile__my__fish-item">
+                <div class="notofication__num-box">
+                    <p class="notofication__num">1</p>
+                    <p>шт</p>
+                </div>
+                <img class="profile__item-img" src="./images/2.png" alt="">
+                <form method="post" asp-page-handler="BuyShrimp">
+                    <button class="profile__button-style">
+                        купити <p>50</p>
+                        <img src="./images/money-small.svg" alt="">
+                    </button>
+                </form>
+            </li>
+            <li class="profile__my__fish-item">
+                <div class="notofication__num-box">
+                    <p class="notofication__num">1</p>
+                    <p>шт</p>
+                </div>
+                <img class="profile__item-img" src="./images/3.png" alt="">
+                <form method="post" asp-page-handler="BuySnail">
+                    <button class="profile__button-style">
+                        купити <p>30</p>
+                        <img src="./images/money-small.svg" alt="">
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="notification">
+    <button class="close__notification">
+        <img src="./images/close.svg" alt="">
+    </button>
+    <ul class="notification__list">
+        @foreach (var notification in ProfileService.GetAllNotificationsByUser(Model.Context, Model.User.Id))
+        {
+            <li class="notification__item">
+                <p class="notification__title">
+                    @notification.Header
+                </p>
+                <p class="notification__text">
+                    @notification.Text
+                </p>
+                <form method="post" asp-page-handler="DeleteNotification">
+                    <input type="hidden" name="notificationId" value="@notification.Id" />
+                    <button class="close__notification-item">
+                        <img src="./images/small_close.svg" alt="">
+                    </button>
+                </form>
+            </li>
+        }
+    </ul>
+</div>

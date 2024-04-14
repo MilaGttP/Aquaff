@@ -1,0 +1,61 @@
+﻿@page
+@model Aquaff.Pages.AquariumModel
+@inject Services.IProfileService ProfileService
+@{
+}
+
+<a asp-page="/Aquarium" class="logo">
+    aquaf
+</a>
+
+@if (Model.Aquarium.IsDirty)
+{
+    <div class="dirt__box">
+        <img class="dirt__box-img" src="./images/dirt.png" alt="">
+    </div>
+}
+
+<div class="main">
+    <div class="container">
+        <a asp-page="/Account" class="main__link">
+            <img src="./images/user.svg" alt="">
+            <p class="main__counter">
+                @Model.NotifyCount
+            </p>
+        </a>
+
+        <ul class="main__fish-list">
+            @foreach (var animal in ProfileService.GetAllAnimalsByUser(Model.Context, Model.Aquarium.Id))
+            {
+                <li class="main__fish-item">
+                    <img src="@ProfileService.GetAnimalPictureByType(animal.Type)" alt="тут мала б бути картинка, але її немає...">
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>
+
+
+<div class="main__bottom">
+    <div class="main__inner">
+        <form method="post" asp-page-handler="FeedAnimal">
+            <button class="main__eat">
+                <img class="main__bottom-img" src="./images/korm.png" alt="">
+                <div class="profile__button-style">
+                    Погодувати <p>40</p>
+                    <img src="./images/money-small.svg" alt="">
+                </div>
+            </button>
+        </form>
+        <form method="post" asp-page-handler="CleanAquarium">
+            <button class="main__eat">
+                <img class="main__bottom-img" src="./images/clean.png" alt="">
+                <div class="profile__button-style">
+                    Помити акваріум <p>40</p>
+                    <img src="./images/money-small.svg" alt="">
+                </div>
+            </button>
+        </form>
+    </div>
+</div>

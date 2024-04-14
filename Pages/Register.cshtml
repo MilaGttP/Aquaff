@@ -1,31 +1,33 @@
 ﻿@page
-@model IndexModel
+@model Aquaff.Pages.RegisterModel
 @{
-    ViewData["Title"] = "Home page";
 }
 
 <div class="login__container">
-    <div id="loginnode" class="login">
-        <div class="container ">
+    <div id="registernode" class="register">
+        <div class="container">
             <form method="post" class="login__form login__blur">
                 <p class="login__title">
-                    Вхід
+                    Реєстрація
                 </p>
                 <div class="login__box">
                     <p class="login__descr">
                         Введіть пошту
                     </p>
-                    <input placeholder="Mail@g.com" class="input__style" type="text" name="Email">
+                    <input class="input__style" placeholder="Mail@g.com" type="text" name="Email">
                     <p class="login__descr">
                         Введіть Пароль
                     </p>
                     <input class="input__style" placeholder="Password" type="text" name="Password">
+                    <p class="login__descr">
+                        Введіть Ім'я
+                    </p>
+                    <input class="input__style" placeholder="Name" type="text" name="Name">
                     <button class="submit__btn">
-                        Увійти
+                        Зареєструватись
                     </button>
-
                     <p class="login__descr login__redirect-box">
-                        Ще немає аккаунта? <a asp-page="/Register" class="login__redirect">Зареєструватись</a>
+                        Уже є аккаунт? <a asp-page="/Index" class="register__redirect">Увійти</a>
                     </p>
                 </div>
             </form>
