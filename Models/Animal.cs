@@ -8,9 +8,10 @@ namespace Aquaff.Models
         public int Id { get; set; }
         public bool IsSatisfied {  get; set; }
         public bool IsAdult { get; set; }
-        public DateOnly Born { get; set; }
-        public DateOnly Dead {  get; set; }
+        public DateTime Born { get; set; }
+        public DateTime Dead {  get; set; }
         public string Type { get; set; }
+        public int Price { get; set; }
 
         public int AccountId { get; set; }
         public Account Account { get; set; }
